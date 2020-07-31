@@ -5,9 +5,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import datetime
 from functools import wraps
-from flask_restplus import Api, Resource
+from flask_restx import Api, Resource
 
 app = Flask(__name__)
+
+api = Api(app, version='1.0', title='Todo API',
+    description='A simple Todo API',
+)
 
 app.config['SECRET_KEY'] = 'thisissecret'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
